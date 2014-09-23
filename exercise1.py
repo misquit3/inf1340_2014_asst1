@@ -46,9 +46,8 @@ def grade_to_gpa(grade):
 
         # check that the grade is one of the accepted values
         accepted_values = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'FZ']
-
-        # assign grade to letter_grade
         if grade in accepted_values:
+            # assign grade to letter_grade
             if grade == 'A+' or grade == 'A':
                 gpa = 4.0
             elif grade == 'A-':
@@ -107,7 +106,7 @@ def mark_to_letter(mark):
             letter_grade = "FZ"
         return letter_grade
     else:
-        raise TypeError('Parameter is not an int or float')
+        raise TypeError('Parameter is not an int')
 
 
 

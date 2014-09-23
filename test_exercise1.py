@@ -2,18 +2,14 @@
 
 """ Module to test exercise1.py """
 
-__author__ = 'Susan Sim'
-__email__ = "ses@drsusansim.org"
-
-__copyright__ = "2014 Susan Sim"
-__license__ = "MIT License"
-
+__author__ = 'Joanna Kolbe, Tania Misquitta'
+__email__ = "joannakolbe@gmail.com"
+__copyright__ = "2014 JK, TM"
 __status__ = "Prototype"
 
 # imports one per line
 import pytest
 from exercise1 import grade_to_gpa
-
 
 def test_letter_grade():
     """

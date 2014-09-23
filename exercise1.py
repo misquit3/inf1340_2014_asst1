@@ -11,15 +11,13 @@ Example:
 
 """
 
-__author__ = 'Susan Sim'
-__email__ = "ses@drsusansim.org"
-
-__copyright__ = "2014 Susan Sim"
-__license__ = "MIT License"
-
+__author__ = 'Joanna Kolbe, Tania Misquitta'
+__email__ = "joannakolbe@gmail.com"
+__copyright__ = "2014 JK, TM"
 __status__ = "Prototype"
 
 # imports one per line
+import array
 
 
 def grade_to_gpa(grade):
@@ -44,23 +42,72 @@ def grade_to_gpa(grade):
     gpa = 0.0
 
     if type(grade) is str:
-        print ("letter") # remove this line once the code is implemented
+        print("letter")  # remove this line once the code is implemented
+
         # check that the grade is one of the accepted values
+        accepted_values = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'FZ']
+
         # assign grade to letter_grade
+        if grade in accepted_values:
+            if grade == 'A+' or grade == 'A':
+                gpa = 4.0
+            elif grade == 'A-':
+                gpa = 3.7
+            elif grade == 'B+':
+                gpa = 3.3
+            elif grade == 'B':
+                gpa = 3.0
+            elif grade == 'B-':
+                gpa = 2.7
+            else:
+                gpa = 0.0
+        else:
+            raise ValueError('Parameter is out of range')
+
     elif type(grade) is int:
-        print("mark") # remove this line once the code is implemented
         # check that grade is in the accepted range
-        # convert the numeric grade to a letter grade
-        # assign the value to letter_grade
-        # hint: letter_grade = mark_to_letter(grade)
+        if 0 <= grade <= 100:
+            # convert the numeric grade to a letter grade
+            letter_grade = mark_to_letter(grade)
+            # assign the value to letter_grade
+            gpa = grade_to_gpa(letter_grade)
+         # throw an error if out of accepted range
+        else:
+            raise ValueError('Parameter is out of range')
     else:
-        # raise a TypeError exception
+        # raise a TypeError exception - if grade is not string or int
         raise TypeError("Invalid type passed as parameter")
 
-    # write a long if-statement to convert letter_grade
-    # assign the value to gpa
-    if letter_grade == "A":
-        gpa = 4.0
-
     return gpa
+
+
+def mark_to_letter(mark):
+    """
+    Returns letter grade corresponding to mark.
+    NOTE: range checking is done inside of the grade_to_gpa function!
+    :param: mark (int): mark to be converted
+    :return: string: Letter grade (Value is in range A+ -> FZ)
+    :raises: TypeError if parameter is not an int
+    """
+    # check if type of passed parameter is correct
+    if type(mark) is int:
+        if 90 <= mark <= 100:
+            letter_grade = "A+"
+        elif 85 <= mark <= 89:
+            letter_grade = "A"
+        elif 80 <= mark <= 84:
+            letter_grade = "A-"
+        elif 77 <= mark <= 79:
+            letter_grade = "B+"
+        elif 73 <= mark <= 76:
+            letter_grade = "B"
+        elif 70 <= mark <= 72:
+            letter_grade = "B-"
+        else:
+            letter_grade = "FZ"
+        return letter_grade
+    else:
+        raise TypeError('Parameter is not an int or float')
+
+
 

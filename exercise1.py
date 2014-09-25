@@ -41,9 +41,8 @@ def grade_to_gpa(grade):
     letter_grade = ""
     gpa = 0.0
 
+    # LETTER GRADE
     if type(grade) is str:
-        print("letter")  # remove this line once the code is implemented
-
         # check that the grade is one of the accepted values
         accepted_values = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'FZ']
         if grade in accepted_values:
@@ -60,53 +59,33 @@ def grade_to_gpa(grade):
                 gpa = 2.7
             else:
                 gpa = 0.0
+        # if grade is not one the accepted values, raise a ValueError
         else:
             raise ValueError('Parameter is out of range')
-
+    # NUMERIC GRADE
     elif type(grade) is int:
         # check that grade is in the accepted range
         if 0 <= grade <= 100:
-            # convert the numeric grade to a letter grade
-            letter_grade = mark_to_letter(grade)
-            # assign the value to letter_grade
-            gpa = grade_to_gpa(letter_grade)
-         # throw an error if out of accepted range
+            if grade >= 85:
+                gpa = 4.0
+            elif grade >= 80:
+                gpa = 3.7
+            elif grade >= 77:
+                gpa = 3.3
+            elif grade >= 73:
+                gpa = 3.0
+            elif grade >= 70:
+                gpa = 2.7
+            else:
+                gpa = 0.0
+        # throw an error if out of accepted range
         else:
             raise ValueError('Parameter is out of range')
+    # raise a TypeError exception - if grade is not string or int
     else:
-        # raise a TypeError exception - if grade is not string or int
         raise TypeError("Invalid type passed as parameter")
 
     return gpa
-
-
-def mark_to_letter(mark):
-    """
-    Returns letter grade corresponding to mark.
-    NOTE: range checking is done inside of the grade_to_gpa function!
-    :param: mark (int): mark to be converted
-    :return: string: Letter grade (Value is in range A+ -> FZ)
-    :raises: TypeError if parameter is not an int
-    """
-    # check if type of passed parameter is correct
-    if type(mark) is int:
-        if 90 <= mark <= 100:
-            letter_grade = "A+"
-        elif 85 <= mark <= 89:
-            letter_grade = "A"
-        elif 80 <= mark <= 84:
-            letter_grade = "A-"
-        elif 77 <= mark <= 79:
-            letter_grade = "B+"
-        elif 73 <= mark <= 76:
-            letter_grade = "B"
-        elif 70 <= mark <= 72:
-            letter_grade = "B-"
-        else:
-            letter_grade = "FZ"
-        return letter_grade
-    else:
-        raise TypeError('Parameter is not an int')
 
 
 

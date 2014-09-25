@@ -17,16 +17,17 @@ def test_letter_grade():
     """
     assert grade_to_gpa("A+") == 4.0
     assert grade_to_gpa("A") == 4.0
-    assert grade_to_gpa("A-") == 4.0
-    assert grade_to_gpa("B+") == 4.0
-    assert grade_to_gpa("B") == 4.0
-    assert grade_to_gpa("B-") == 4.0
-    assert grade_to_gpa("FZ") == 4.0
+    assert grade_to_gpa("A-") == 3.7
+    assert grade_to_gpa("B+") == 3.3
+    assert grade_to_gpa("B") == 3.0
+    assert grade_to_gpa("B-") == 2.7
+    assert grade_to_gpa("FZ") == 0.0
     
     with pytest.raises(ValueError):
         grade_to_gpa("q")
-    # add more tests for invalid values
-
+        grade_to_gpa("A++")
+        grade_to_gpa("-B")
+        grade_to_gpa("FZ-")
 
 def test_percentage_grade():
     """
@@ -63,6 +64,8 @@ def test_percentage_grade():
     with pytest.raises(ValueError):
         grade_to_gpa(101)
         grade_to_gpa(-1)
+        grade_to_gpa(-100)
+        grade_to_gpa(999)
 
 
 def test_float_input():
@@ -71,5 +74,15 @@ def test_float_input():
     """
     with pytest.raises(TypeError):
         grade_to_gpa(82.5)
+        grade_to_gpa(0.5)
+        grade_to_gpa(100.1)
+        grade_to_gpa(-82.5)
 
 # add functions for any other tests
+def test_array_input():
+    """
+    Array inputs
+    """
+    with pytest.raises(TypeError):
+        grade_to_gpa([1,2,3])
+        grade_to_gpa(['A','A+','B-'])

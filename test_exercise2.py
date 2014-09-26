@@ -38,3 +38,11 @@ def test_input():
     # other tests
 
 # add functions for any other tests
+def test_format():
+    """
+    Inputs that consist incorrect non-numeric characters
+    """
+    with pytest.raises(TypeError):
+         checksum("123x56789!12")
+         checksum("x23356789312")
+         checksum("x233567@o312")

@@ -25,6 +25,7 @@ def checksum(upc):
     :raises:
         TypeError if input is not a string
         ValueError if string is the wrong length (with error string stating how many digits are over or under
+        TypeError if string consists of non-numeric characters
     """
 
     # check type of input
@@ -46,37 +47,45 @@ def checksum(upc):
         else:
             # convert string to array
             upc_array = list(upc)
-
             # convert array of strings to array of ints
             upc_array = convert_to_ints(upc_array)
 
-            # generate checksum using the first 11 digits provided
+            """
+            generate checksum using the first 11 digits provided
+            python arrays are 0 indexed so first position would be 0
+            third = index 2 etc.
 
+            [start:end:step]
+            want to end at 11 since we do not want to include 12th digit in our calculations
+            """
             #add odd-numbered positions
-            #python arrays are 0 indexed so first position would be 0
-            #third = index 2 etc.
-
             odd_sum = sum(upc_array[0:11:2])
+            #add even-numbered positions
             even_sum = sum(upc_array[1:11:2])
 
+            # check_digit is the 12th digit of UPC
+            # do calculations
             check_digit = (odd_sum*3+even_sum)%10
             if check_digit != 0:
-                check_digit=10-check_digit
+                check_digit = 10-check_digit
 
     # raise TypeError if not string
     else:
         raise TypeError('Parameter is not a string')
 
-    # check against the the twelfth digit
+    # check UPC against the the 12th digit
     # return True if they are equal, False otherwise
-    if check_digit == upc_array[11]:
-        return True
-    else:
-        return False
+    return check_digit == upc_array[11]
 
 
 def convert_to_ints(array):
+    """
+    Converts array of numeric strings to an array of integers
+    :param array: list of string digits e.g. ['1','2','3']
+    :return: list of ints e.g. [1,2,3]
+    :raises: TypeError if any values inside the list cannot be casted to int
+    """
     try:
         return [int(value) for value in array]
     except:
-        raise TypeError('UPC contains not allowed characters')
+        raise TypeError('string consists of non-numeric characters')

@@ -44,21 +44,11 @@ def grade_to_gpa(grade):
     # LETTER GRADE
     if type(grade) is str:
         # check that the grade is one of the accepted values
-        accepted_values = ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'FZ']
+        # created a hash-map for easy value look up
+        accepted_values = {'A+': 4.0, 'A': 4.0, 'A-': 3.7, 'B+': 3.3, 'B': 3.0, 'B-': 2.7, 'FZ': 0.0}
         if grade in accepted_values:
-            # assign grade to letter_grade
-            if grade == 'A+' or grade == 'A':
-                gpa = 4.0
-            elif grade == 'A-':
-                gpa = 3.7
-            elif grade == 'B+':
-                gpa = 3.3
-            elif grade == 'B':
-                gpa = 3.0
-            elif grade == 'B-':
-                gpa = 2.7
-            else:
-                gpa = 0.0
+            # assign grade to letter_grade based on hash key
+            gpa = accepted_values[grade]
         # if grade is not one the accepted values, raise a ValueError
         else:
             raise ValueError('Parameter is out of range')
@@ -86,6 +76,4 @@ def grade_to_gpa(grade):
         raise TypeError("Invalid type passed as parameter")
 
     return gpa
-
-
-
+    

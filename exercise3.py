@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 """
+#!/usr/bin/env python3
+
     Decide the result of a rock, paper, scissors game
 
     Assignment 1, Exercise 3, INF1340 Fall 2014
@@ -37,7 +39,6 @@ __copyright__ = "2014 JK, TM"
 __status__ = "Prototype"
 
 
-
 def decide_rps(player1, player2):
     """
     Returns the winner of rock-paper-scissors game.
@@ -62,7 +63,7 @@ def decide_rps(player1, player2):
 
     if type(player1) is str and type(player2) is str:
 
-        #convert to lower case so the user may words in upper case as well
+        # convert to lower case so the user may words in upper case as well
         player1 = player1.lower()
         player2 = player2.lower()
 
@@ -78,11 +79,16 @@ def decide_rps(player1, player2):
                      player2 -> paper = 1
                      (2-1)%3 = 1%3 = 1 (player 1 wins)
             """
-            return (option_map[player1] - option_map[player2]) % 3
+            retval = (option_map[player1] - option_map[player2]) % 3
+            print(retval)
+            print('aaaa')
+            print(option_map[player1])
+            print(option_map[player2])
+            return retval
         #one or both parameters are not one of the options e.g. 'hammer'
         else:
             raise ValueError('option error')
 
-    #parameters are not strings
+    # parameters are not strings
     else:
         raise TypeError('Parameter is not a string')

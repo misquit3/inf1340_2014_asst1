@@ -14,6 +14,7 @@ from exercise2 import checksum
 upc = input("Enter upc: ")
 print(checksum(upc))
 
+
 def test_checksum():
     """
     Inputs that are the correct format and length
@@ -36,7 +37,8 @@ def test_input():
         checksum("1")
         checksum("1234567890")
 
-    # other tests
+        # other tests
+
 
 # add functions for any other tests
 def test_format():
@@ -44,6 +46,7 @@ def test_format():
     Inputs that consist incorrect non-numeric characters
     """
     with pytest.raises(TypeError):
-         checksum("123x56789!12")
-         checksum("x23356789312")
-         checksum("x233567@o312")
+        checksum("123x56789!12")
+        checksum("x23356789312")
+        checksum("x233567@o312")
+        checksum("AB33567@o312")

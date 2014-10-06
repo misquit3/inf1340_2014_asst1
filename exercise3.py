@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 """
-#!/usr/bin/env python3
-
     Decide the result of a rock, paper, scissors game
 
     Assignment 1, Exercise 3, INF1340 Fall 2014
@@ -66,11 +64,10 @@ def decide_rps(player1, player2):
         # convert to lower case so the user may words in upper case as well
         player1 = player1.lower()
         player2 = player2.lower()
-
-        #hash-map to match string values to their int representations
+        # hash-map to match string values to their int representations
         option_map = {'rock': 0, 'paper': 1, 'scissors': 2}
 
-        #check if parameters are one of the possible choices
+        # check if parameters are one of the possible choices
         if player1 in option_map and player2 in option_map:
             """
             everything is correct, perform mapping and calculations
@@ -79,14 +76,10 @@ def decide_rps(player1, player2):
                      player2 -> paper = 1
                      (2-1)%3 = 1%3 = 1 (player 1 wins)
             """
-            retval = (option_map[player1] - option_map[player2]) % 3
-
-            return retval
-
-
-        #one or both parameters are not one of the options e.g. 'hammer'
+            return (option_map[player1] - option_map[player2]) % 3
+        # one or both parameters are not one of the options e.g. 'hammer'
         else:
-            raise ValueError('not a valid string value')
+            raise ValueError('option error')
 
     # parameters are not strings
     else:

@@ -1,29 +1,13 @@
-
-
-""" Module to test exercise1.py """
-
-__author__ = 'Joanna Kolbe, Tania Misquitta'
-__email__ = "joannakolbe@gmail.com"
-__copyright__ = "2014 JK, TM"
-__status__ = "Prototype"
-
-
 #!/usr/bin/env python3
-#!/usr/bin/env python3
+
 import pytest
 from exercise3 import decide_rps
 
 
-Player1RPS = input("Player 1, enter RPS: ")
-Player2RPS = input("Player 2, enter RPS: ")
-print(decide_rps(Player1RPS,Player2RPS))
-
-def test_checksum():
+def test_rps():
     """
-    Inputs that are the correct format and length
-
+    check that expected input behaves correctly
     """
-       # check that expected input behaves correctly
     assert decide_rps("Rock", "Rock") == 0
     assert decide_rps("Rock", "Paper") == 2
     assert decide_rps("Rock", "Scissors") == 1
@@ -33,15 +17,22 @@ def test_checksum():
     assert decide_rps("Paper", "Paper") == 0
     assert decide_rps("Paper", "Scissors") == 2
     assert decide_rps("Paper", "Rock") == 1
-    # check that correct exception is thrown for unexpected value
+
+
+def test_value():
+    """
+    check that correct exception is thrown for unexpected value
+    """
     with pytest.raises(ValueError):
-        decide_rps("Rock", "Banana") == 1
+        decide_rps("Rock", "Banana")
+        decide_rps("asdj", "Papppper")
 
-    # check that correct exception is thrown for bad type
+
+def test_type():
+    """
+    check that correct exception is thrown for bad type
+    """
     with pytest.raises(TypeError):
-        decide_rps("Rock", 2) == 1
-
-
-
-
-
+        decide_rps(2, "Banana")
+        decide_rps("asdj", 2)
+        decide_rps("Paper", 2)

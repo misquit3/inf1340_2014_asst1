@@ -24,7 +24,8 @@ def checksum(upc):
         False, otherwise
     :raises:
         TypeError if input is not a string
-        ValueError if string is the wrong length (with error string stating how many digits are over or under
+        ValueError if string is the wrong length
+            (with error string stating how many digits are over or under
         TypeError if string consists of non-numeric characters
     """
 
@@ -36,13 +37,13 @@ def checksum(upc):
 
         # raise ValueError if not 12
         if string_length != 12:
-            # check if length is greater or smaller than 12 and adjust error message
+            # check if length is > or < than 12 and adjust error message
             if string_length > 12:
                 error_message = str(string_length - 12) + ' digits over'
             else:
                 error_message = str(12 - string_length) + ' digits under'
 
-            raise ValueError('String is the wrong length (' + error_message + ')')
+            raise ValueError('Incorrect length (' + error_message + ')')
         # upc is exactly 12 characters long
         else:
             # convert string to array
@@ -56,16 +57,18 @@ def checksum(upc):
             third = index 2 etc.
 
             [start:end:step]
-            want to end at 11 since we do not want to include 12th digit in our calculations
+            want to end at 11 since we do not want to
+            include 12th digit in our calculations
+
+            add odd-numbered positions and even-numbered positions
             """
-            #add odd-numbered positions
+
             odd_sum = sum(upc_array[0:11:2])
-            #add even-numbered positions
             even_sum = sum(upc_array[1:11:2])
 
             # check_digit is the 12th digit of UPC
             # do calculations
-            check_digit = (odd_sum*3+even_sum)%10
+            check_digit = (odd_sum*3+even_sum) % 10
             if check_digit != 0:
                 check_digit = 10-check_digit
 

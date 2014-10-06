@@ -8,11 +8,10 @@ __copyright__ = "2014 JK, TM"
 __status__ = "Prototype"
 
 # imports one per line
+
+# imports one per line
 import pytest
 from exercise2 import checksum
-
-upc = input("Enter upc: ")
-print(checksum(upc))
 
 
 def test_checksum():
@@ -49,4 +48,3 @@ def test_format():
         checksum("123x56789!12")
         checksum("x23356789312")
         checksum("x233567@o312")
-        checksum("AB33567@o312")

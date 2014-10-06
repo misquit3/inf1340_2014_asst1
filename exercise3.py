@@ -90,7 +90,7 @@ def decide_rps(player1, player2):
 
         #one or both parameters are not one of the options e.g. 'hammer'
         else:
-            raise ValueError('option error')
+            raise ValueError('not a valid string value')
 
     # parameters are not strings
     else:

@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+""" Module to test exercise3.py """
+
+__author__ = 'Joanna Kolbe, Tania Misquitta'
+__email__ = "joannakolbe@gmail.com"
+__copyright__ = "2014 JK, TM"
+__status__ = "Prototype"
+
+# imports one per line
 import pytest
 from exercise3 import decide_rps
 

@@ -26,8 +26,11 @@ def test_letter_grade():
 
     with pytest.raises(ValueError):
         grade_to_gpa("q")
+    with pytest.raises(ValueError):
         grade_to_gpa("A++")
+    with pytest.raises(ValueError):
         grade_to_gpa("-B")
+    with pytest.raises(ValueError):
         grade_to_gpa("FZ-")
 
 
@@ -65,8 +68,11 @@ def test_percentage_grade():
 
     with pytest.raises(ValueError):
         grade_to_gpa(101)
+    with pytest.raises(ValueError):
         grade_to_gpa(-1)
+    with pytest.raises(ValueError):
         grade_to_gpa(-100)
+    with pytest.raises(ValueError):
         grade_to_gpa(999)
 
 
@@ -76,8 +82,11 @@ def test_float_input():
     """
     with pytest.raises(TypeError):
         grade_to_gpa(82.5)
+    with pytest.raises(TypeError):
         grade_to_gpa(0.5)
+    with pytest.raises(TypeError):
         grade_to_gpa(100.1)
+    with pytest.raises(TypeError):
         grade_to_gpa(-82.5)
 
 
@@ -88,4 +97,5 @@ def test_array_input():
     """
     with pytest.raises(TypeError):
         grade_to_gpa([1, 2, 3])
+    with pytest.raises(TypeError):
         grade_to_gpa(['A', 'A+', 'B-'])

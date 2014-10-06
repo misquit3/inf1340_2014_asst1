@@ -33,6 +33,7 @@ def test_value():
     """
     with pytest.raises(ValueError):
         decide_rps("Rock", "Banana")
+    with pytest.raises(ValueError):
         decide_rps("asdj", "Papppper")
 
 
@@ -42,5 +43,7 @@ def test_type():
     """
     with pytest.raises(TypeError):
         decide_rps(2, "Banana")
+    with pytest.raises(TypeError):
         decide_rps("asdj", 2)
+    with pytest.raises(TypeError):
         decide_rps("Paper", 2)

@@ -28,10 +28,12 @@ def test_input():
     """
     with pytest.raises(TypeError):
         checksum(1.0)
+    with pytest.raises(TypeError):
         checksum(786936224306)
 
     with pytest.raises(ValueError):
         checksum("1")
+    with pytest.raises(ValueError):
         checksum("1234567890")
 
         # other tests
@@ -44,5 +46,7 @@ def test_format():
     """
     with pytest.raises(TypeError):
         checksum("123x56789!12")
+    with pytest.raises(TypeError):
         checksum("x23356789312")
+    with pytest.raises(TypeError):
         checksum("x233567@o312")

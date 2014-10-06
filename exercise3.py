@@ -80,11 +80,14 @@ def decide_rps(player1, player2):
                      (2-1)%3 = 1%3 = 1 (player 1 wins)
             """
             retval = (option_map[player1] - option_map[player2]) % 3
-            print(retval)
-            print('aaaa')
-            print(option_map[player1])
-            print(option_map[player2])
+
+            if retval == 0:retval = 'Draw'
+            if retval == 1:retval = 'Player 1 wins'
+            if retval == 2:retval = 'Player 2 wins'
+
             return retval
+
+
         #one or both parameters are not one of the options e.g. 'hammer'
         else:
             raise ValueError('option error')

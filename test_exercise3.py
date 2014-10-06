@@ -11,8 +11,12 @@ __status__ = "Prototype"
 #!/usr/bin/env python3
 #!/usr/bin/env python3
 import pytest
-
 from exercise3 import decide_rps
+
+
+Player1RPS = input("Player 1, enter RPS: ")
+Player2RPS = input("Player 2, enter RPS: ")
+print(decide_rps(Player1RPS,Player2RPS))
 
 def test_checksum():
     """

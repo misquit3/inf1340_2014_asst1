@@ -8,8 +8,6 @@ __copyright__ = "2014 JK, TM"
 __status__ = "Prototype"
 
 # imports one per line
-
-# imports one per line
 import pytest
 from exercise2 import checksum
 

@@ -11,6 +11,9 @@ __status__ = "Prototype"
 import pytest
 from exercise2 import checksum
 
+upc = input("Enter upc: ")
+print(checksum(upc))
+
 def test_checksum():
     """
     Inputs that are the correct format and length

@@ -81,10 +81,6 @@ def decide_rps(player1, player2):
             """
             retval = (option_map[player1] - option_map[player2]) % 3
 
-            if retval == 0:retval = 'Draw'
-            if retval == 1:retval = 'Player 1 wins'
-            if retval == 2:retval = 'Player 2 wins'
-
             return retval
 
 
